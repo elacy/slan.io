@@ -1,4 +1,7 @@
 {
+  "name": "secure-web-chat",
+  "version": "0.0.1",
+  "description": "",
   "private": true,
   "engines": {
     "node": ">=4"
