@@ -42,4 +42,4 @@ dist
 .tmp
 test/bower_components
 
-*.js
+app/scripts/*.js
