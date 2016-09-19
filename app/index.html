@@ -244,11 +244,11 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-9 col-xs-12 chat" style="overflow: hidden; outline: none;" tabindex="5001">
+        <div class="col-sm-9 col-xs-12 chat" style="overflow: hidden; outline: none;" data-bind="with: chat" tabindex="5001">
           <div class="col-inside-lg decor-default">
             <div class="chat-body">
               <h6>Mini Chat</h6>
-              <!-- ko foreach: chat.messages -->
+              <!-- ko foreach: messages -->
               <div class="answer left">
                 <div class="avatar">
                   <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
@@ -260,7 +260,7 @@
               </div>
               <!-- /ko -->
               <div class="answer-add">
-                <input placeholder="Write a message" data-bind="enterkey: chat.sendMessage, text: chat.sendMessageText">
+                <input type="text" placeholder="Write a message" data-bind="enterkey: sendMessage, value: sendMessageText, valueUpdate: 'afterkeydown'">
                 <span class="answer-btn answer-btn-1"></span>
                 <span class="answer-btn answer-btn-2"></span>
               </div>
@@ -278,13 +278,13 @@
     <script src="/bower_components/socket-io-client/socket.io.js"></script>
 
     <script src="/bower_components/crypto-js/src/core.js"></script>
-    <script src="/bower_components/crypto-js/src/cipher-core.js"></script>
     <script src="/bower_components/crypto-js/src/enc-base64.js"></script>
     <script src="/bower_components/crypto-js/src/md5.js"></script>
     <script src="/bower_components/crypto-js/src/evpkdf.js"></script>
     <script src="/bower_components/crypto-js/src/sha1.js"></script>
     <script src="/bower_components/crypto-js/src/hmac.js"></script>
     <script src="/bower_components/crypto-js/src/pbkdf2.js"></script>
+    <script src="/bower_components/crypto-js/src/cipher-core.js"></script>
     <script src="/bower_components/crypto-js/src/aes.js"></script>
     <!-- endbower -->
     <!-- endbuild -->

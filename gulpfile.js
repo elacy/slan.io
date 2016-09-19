@@ -1,5 +1,6 @@
 // generated on 2016-09-18 using generator-webapp 2.1.0
 const gulp = require('gulp');
+var nodemon = require('gulp-nodemon');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const ts = require('gulp-typescript');
 const browserSync = require('browser-sync');
@@ -111,17 +112,12 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'scripts', 'index', 'fonts'], () => {
-  browserSync({
-    notify: false,
-    port: 9000,
-    server: {
-      baseDir: ['.tmp', 'app'],
-      routes: {
-        '/bower_components': 'bower_components'
-      }
-    }
-  });
+gulp.task('serve', ['styles', 'scripts', 'index', 'fonts', 'nodemon'], () => {
+  browserSync.init(null, {
+		proxy: "http://localhost:3000",
+        files: ["app/**/*.*"],
+        port: 7000,
+	});
 
   gulp.watch([
     'app/*.html',
@@ -134,6 +130,21 @@ gulp.task('serve', ['styles', 'scripts', 'index', 'fonts'], () => {
   gulp.watch('app/scripts/**/*.ts', ['index']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
+});
+
+gulp.task('nodemon', function (cb) {
+	var started = false;
+
+	return nodemon({
+		script: 'server/main.js'
+	}).on('start', function () {
+		// to avoid nodemon being started multiple times
+		// thanks @matthisk
+		if (!started) {
+			cb();
+			started = true;
+		}
+	});
 });
 
 gulp.task('serve:dist', () => {

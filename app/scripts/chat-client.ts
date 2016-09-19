@@ -14,7 +14,7 @@ class ChatClient extends MessageHandler{
     this.channelCrypt = channelCrypt;
 
     this.socket = io();
-    this.socket.on('chat message', this.messageReceived);
+    this.socket.on('chat message', (m)=>this.messageReceived(m));
   }
 
   messageReceived(encryptedString){

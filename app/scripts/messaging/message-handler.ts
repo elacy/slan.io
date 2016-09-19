@@ -13,10 +13,8 @@ class MessageHandler {
   }
 
   handle(message: Message){
-    var func = this["handle" + message.type];
-
-    if(func){
-      func(message);
+    if(this["handle" + message.type]){
+      this["handle" + message.type](message);
     }
   }
 }

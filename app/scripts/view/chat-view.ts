@@ -8,13 +8,11 @@ class ChatView extends MessageHandler {
 
   constructor(router: Router){
     super(router);
-
-    this.messages.push(new ChatMessage("Eva", "Hi"));
-    this.messages.push(new ChatMessage("Oscar", "Hi"));
   }
 
   sendMessage(){
     this.send(new SendChatMessage("User", this.sendMessageText()));
+    this.sendMessageText('');
   }
 
   handleChatMessage(message: ChatMessage){
