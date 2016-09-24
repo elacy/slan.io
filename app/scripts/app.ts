@@ -19,6 +19,7 @@ class App {
     }
 
     init(){
+      this.view.init();
       ko.applyBindings(this.view);
     }
 }
