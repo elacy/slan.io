@@ -1,5 +1,8 @@
 /// <reference path="message.ts" />
 /// <reference path="router.ts" />
+/// <reference path="send.ts" />
+/// <reference path="receive.ts" />
+/// <reference path="message-extender.ts"/>
 class MessageHandler {
   router: Router;
 
@@ -8,13 +11,24 @@ class MessageHandler {
     router.register(this);
   }
 
-  send (message: Message){
-    this.router.route(message);
+  routeSend(message:Message){
+    this.router.route(new Send<Message>(message));
+  }
+
+  routeRecieve(message: Message){
+    this.router.route(new Receive<Message>(message));
   }
 
   handle(message: Message){
-    if(this["handle" + message.type]){
-      this["handle" + message.type](message);
+    var type = message.type;
+
+    if(message.hasOwnProperty("extension")){
+      var extender = <MessageExtender<Message>> message;
+      message = extender.message;
+    }
+
+    if(this[`handle${type}`]){
+      this[`handle${type}`](message);
     }
   }
 }

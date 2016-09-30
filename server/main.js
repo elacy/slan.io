@@ -7,8 +7,8 @@ app.use(express.static('.tmp'));
 app.use('/bower_components', express.static('bower_components'));
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('channel message', function(msg){
+    io.emit('channel message', msg);
   });
 });
 

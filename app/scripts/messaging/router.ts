@@ -1,4 +1,6 @@
-/// <reference path="./message-handler.ts"/>
+/// <reference path="message-handler.ts"/>
+/// <reference path="send.ts"/>
+/// <reference path="send.ts"/>
 class Router{
   handlers: Array<MessageHandler> = new Array<MessageHandler>();
 

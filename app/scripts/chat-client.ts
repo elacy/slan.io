@@ -6,25 +6,19 @@
 
 class ChatClient extends MessageHandler{
   socket: SocketIOClient.Socket;
-  channelCrypt: Crypt;
 
-  constructor(router: Router, channelCrypt: Crypt){
+  constructor(router: Router){
     super(router);
 
-    this.channelCrypt = channelCrypt;
-
     this.socket = io();
-    this.socket.on('chat message', (m)=>this.messageReceived(m));
+    this.socket.on('channel message', (m)=>this.messageReceived(m));
   }
 
   messageReceived(encryptedString){
-    var decryptedString = this.channelCrypt.decrypt(encryptedString);
-    var chatMessage = new ChatMessage("User", decryptedString);
-    this.send(chatMessage);
+    this.routeRecieve(new ChannelMessage(encryptedString));
   }
 
-  handleSendChatMessage(message: SendChatMessage){
-    var encryptedString = this.channelCrypt.encrypt(message.text);
-    this.socket.emit('chat message', encryptedString)
+  handleSendChannelMessage(message: ChannelMessage){
+    this.socket.emit('channel message', message.text);
   }
 }
