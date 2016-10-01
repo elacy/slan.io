@@ -1,5 +1,6 @@
-/// <reference path="../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
+/// <reference path="../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
 
-interface JQueryStatic {
+interface JQuery {
 	niceScroll();
+	getNiceScroll(index: number);
 }

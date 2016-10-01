@@ -2,6 +2,7 @@
 /// <reference path="../chat/chat-message.ts" />
 /// <reference path="../messaging/message-handler.ts" />
 /// <reference path="../messaging/receive.ts" />
+/// <reference path="../../typescript-definitions/jquery-nicescroll.d.ts" />
 class ChatView extends MessageHandler {
   messages = ko.observableArray<ChatMessage>();
   sendMessageText = ko.observable<string>();

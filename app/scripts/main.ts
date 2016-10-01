@@ -5,7 +5,6 @@
 var app = new App();
 
 $(function(){
-    $(".chat").niceScroll();
     app.init();
 })
 
@@ -22,5 +21,22 @@ bindingHandlers.enterkey = {
             }
             return true;
         });
+    }
+};
+
+bindingHandlers.messages = {
+    init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+        $(element).niceScroll();
+        ko.applyBindingsToNode(element, {
+          foreach: {
+            data: valueAccessor(),
+            afterRender: function(){
+              var scroll = $(element).getNiceScroll(0);
+              scroll.resize();
+              scroll.doScrollTop(scroll.page.h, 300);
+
+            }
+          }
+        }, bindingContext);
     }
 };

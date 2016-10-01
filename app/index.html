@@ -68,46 +68,43 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-9 col-xs-12 chat" style="overflow: hidden; outline: none;" data-bind="with: chat" tabindex="5001">
+        <div class="col-sm-9 col-xs-12 chat" data-bind="with: chat" tabindex="5001">
           <div class="col-inside-lg decor-default">
             <div class="chat-body">
               <h6>Mini Chat</h6>
-              <!-- ko foreach: messages -->
-              <div class="answer left">
-                <div class="avatar">
-                  <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
-                  <div class="status offline"></div>
+              <div class="chat-messages" style="overflow: hidden; outline: none;" data-bind="messages: messages" >
+                <div class="answer left">
+                  <div class="avatar">
+                    <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+                    <div class="status offline"></div>
+                  </div>
+                  <div class="name" data-bind="text: user"></div>
+                  <div class="text" data-bind="text: text"></div>
+                  <div class="time">5 min ago</div>
                 </div>
-                <div class="name" data-bind="text: user"></div>
-                <div class="text" data-bind="text: text"></div>
-                <div class="time">5 min ago</div>
               </div>
-              <!-- /ko -->
               <div class="answer-add">
                 <input type="text" placeholder="Write a message" data-bind="enterkey: sendMessage, value: sendMessageText, valueUpdate: 'afterkeydown'">
                 <span class="answer-btn answer-btn-1"></span>
-                <span class="answer-btn answer-btn-2"></span>
+                <span class="answer-btn answer-btn-2" data-bind="click: sendMessage"></span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div id="start" class="modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div id="start" class="modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" data-bind="enterKey: startChat">
       <div class="modal-dialog" role="document">
         <div class="modal-content" data-bind="with: start" >
           <div class="modal-header">
             <h4 class="modal-title">Welcome to Secure Chat</h4>
           </div>
           <div class="modal-body">
-            <form>
               <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
                 <input type="text" class="form-control" data-bind="value: username" aria-describedby="emailHelp" placeholder="Enter Username">
                 <small id="emailHelp" class="form-text text-muted">You can make something up :)</small>
               </div>
-            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-bind="click: startChat">Start Chat</button>

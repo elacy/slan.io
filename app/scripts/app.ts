@@ -18,7 +18,6 @@ class App {
       this.view = new AppView(this.router);
 
       this.channel = new Channel(this.router);
-
       this.client = new ChatClient(this.router);
     }
 

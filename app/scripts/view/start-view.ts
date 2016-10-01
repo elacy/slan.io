@@ -11,7 +11,10 @@ class StartView extends MessageHandler {
   }
 
   show(){
-    $("#start").modal('show');
+    $("#start").modal({
+      show: true,
+      keyboard:false
+    });
   }
 
   startChat(){

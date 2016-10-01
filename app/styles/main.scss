@@ -23,8 +23,11 @@ body {
 .col-inside-lg {
     padding: 20px;
 }
+.chat-messages {
+    height: calc(100vh - 200px);
+}
 .chat {
-    height: calc(100vh - 180px);
+    height: calc(100vh - 60px);
 }
 .decor-default {
     background-color: #ffffff;
