@@ -66,6 +66,7 @@
                     <div class="mood">User mood</div>
                 </div>
             </div>
+            <button type="button" class="btn btn-default">His</button>
           </div>
         </div>
         <div class="col-sm-9 col-xs-12 chat" data-bind="with: chat" tabindex="5001">
@@ -93,7 +94,7 @@
         </div>
       </div>
     </div>
-    <div id="start" class="modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" data-bind="enterKey: startChat">
+    <div id="start" class="modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
       <div class="modal-dialog" role="document">
         <div class="modal-content" data-bind="with: start" >
           <div class="modal-header">
@@ -104,6 +105,26 @@
                 <label for="exampleInputEmail1">Username</label>
                 <input type="text" class="form-control" data-bind="value: username" aria-describedby="emailHelp" placeholder="Enter Username">
                 <small id="emailHelp" class="form-text text-muted">You can make something up :)</small>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bind="click: startChat">Start Chat</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="invite" class="modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" data-bind="with: invite" >
+          <div class="modal-header">
+            <h4 class="modal-title">Invite Link</h4>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Invitation Link</label>
+                <input type="text" class="form-control" data-bind="value: username" aria-describedby="emailHelp" placeholder="Enter Username">
+                <small id="emailHelp" class="form-text text-muted">Copy this and send it to a friend</small>
               </div>
           </div>
           <div class="modal-footer">
