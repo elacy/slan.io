@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "private": true,
-  "main": "main.js",
+  "main": "server.js",
   "engines": {
     "node": ">=4"
   },
