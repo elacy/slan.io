@@ -3,6 +3,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+
 if(process.env.NODE_ENV === 'development'){
   app.use(express.static('.tmp'));
   app.use('/bower_components', express.static('bower_components'));
@@ -17,6 +18,7 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+var port = process.env.port || 3000;
+http.listen(port, function(){
+  console.log(`listening on *:${port}`);
 });

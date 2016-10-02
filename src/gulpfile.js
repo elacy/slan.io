@@ -83,7 +83,7 @@ gulp.task('html', ['styles', 'index'], () => {
 });
 
 gulp.task('node', ()=>{
-  return gulp.src('server/*.js')
+  return gulp.src('{server.js,package.json,web.config}')
     .pipe(gulp.dest('dist'));
 });
 
