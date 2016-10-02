@@ -1,5 +1,10 @@
 # Secure Web Chat
 
+## Demo
+
+The project is in an early development state but there is a demo of the project currently up here: [https://www.slan.io](https://www.slan.io) (running on azure).
+
+
 ## Users Info
 
 When you talk on almost any other chat system the server is aware of what you are talking about, I wanted to create a chat system that was based around your privacy. However I don't expect to use this as their primary way of talking so I also built it around the idea that you would use another chat system to verify that you are talking to the right person.
@@ -14,7 +19,25 @@ I really want people to be able to talk freely, without fear.
 
 ## Technical Info
 
+- Runs on Node.js running socket.io
 - No CDN, Analytics or other external references
+- Uses AES to encrypt the messages using CryptJS library
+- Invitations single use and use a separate encryption key to the channel
+- Uses a version of the mediator pattern
 
+## How do I get involved
 
-I'm using the CryptJS libary by Google to AES encrypt the messages before they go over the wire. The invitations use a separate generated password stored only on the client side using the url hash to encrypt messages between the new user and the first user. Once the invitation is accepted the new user will get the room password, the server is told by the accepting user to start sending them the rooms encrypted messages and we're good to go.
+- Create an issue or grab one from [the github project](https://github.com/elacy/slan.io/projects/1)
+- Fork the project
+- Make some changes
+- Submit a PR
+
+## How do I run the project locally
+
+- Install node
+- Open command prompt
+- Change directory to the src folder
+- Run `npm install`
+- Run `bower install`
+- Run `gulp serve`
+- When completed your browser should open up with the site

@@ -6,6 +6,7 @@ var io = require('socket.io')(http);
 
 if(process.env.NODE_ENV === 'development'){
   app.use(express.static('.tmp'));
+  app.use(express.static('client'));
   app.use('/bower_components', express.static('bower_components'));
 }
 else{
