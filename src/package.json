@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "private": true,
+  "main": "main.js",
   "engines": {
     "node": ">=4"
   },
