@@ -1,4 +1,4 @@
-/// <reference path="../../bower_components/DefinitelyTyped/cryptojs/cryptojs.d.ts" />
+/// <reference path="../../../bower_components/DefinitelyTyped/cryptojs/cryptojs.d.ts" />
 
 class Crypt{
   password: string;

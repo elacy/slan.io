@@ -36,7 +36,7 @@ I really want people to be able to talk freely, without fear.
 
 - Install node
 - Open command prompt
-- Change directory to the src folder
+- Change directory to root folder
 - Run `npm install`
 - Run `bower install`
 - Run `gulp serve`

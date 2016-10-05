@@ -1,5 +1,5 @@
-/// <reference path="../../../bower_components/DefinitelyTyped/knockout/knockout.d.ts" />
-/// <reference path="../../../bower_components/DefinitelyTyped/bootstrap/bootstrap.d.ts" />
+/// <reference path="../../../../bower_components/DefinitelyTyped/knockout/knockout.d.ts" />
+/// <reference path="../../../../bower_components/DefinitelyTyped/bootstrap/bootstrap.d.ts" />
 /// <reference path="../chat/chat-message.ts" />
 /// <reference path="../messaging/message-handler.ts" />
 /// <reference path="../chat/username-change.ts" />

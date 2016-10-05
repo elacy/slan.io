@@ -1,6 +1,6 @@
-/// <reference path="../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
-/// <reference path="../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
-/// <reference path="../../bower_components/DefinitelyTyped/socket.io-client/socket.io-client.d.ts" />
+/// <reference path="../../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
+/// <reference path="../../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
+/// <reference path="../../../bower_components/DefinitelyTyped/socket.io-client/socket.io-client.d.ts" />
 /// <reference path="messaging/message-handler.ts" />
 /// <reference path="crypt.ts" />
 

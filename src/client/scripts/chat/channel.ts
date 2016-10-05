@@ -1,4 +1,4 @@
-/// <reference path="../../../bower_components/DefinitelyTyped/knockout/knockout.d.ts" />
+/// <reference path="../../../../bower_components/DefinitelyTyped/knockout/knockout.d.ts" />
 /// <reference path="chat-message.ts" />
 /// <reference path="../messaging/send.ts" />
 /// <reference path="../messaging/message-handler.ts" />

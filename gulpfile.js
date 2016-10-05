@@ -12,7 +12,7 @@ const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 gulp.task('styles', () => {
-  return gulp.src('client/styles/*.scss')
+  return gulp.src('src/client/styles/*.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
@@ -27,10 +27,10 @@ gulp.task('styles', () => {
 });
 
 gulp.task('index', ['scripts'], function () {
-  return gulp.src('client/index.html')
+  return gulp.src('src/client/index.html')
     .pipe(
       inject(
-        gulp.src('client/scripts/**/*.ts').pipe(ts({declaration: true, sortOutput: true})),
+        gulp.src('src/client/scripts/**/*.ts').pipe(ts({declaration: true, sortOutput: true})),
         {relative: true }
       )
     )
@@ -38,7 +38,7 @@ gulp.task('index', ['scripts'], function () {
 });
 
 gulp.task('scripts', () => {
-  return gulp.src('client/scripts/**/*.ts')
+  return gulp.src('src/client/scripts/**/*.ts')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe(ts({declaration: true}))
@@ -57,25 +57,25 @@ function lint(files, options) {
 }
 
 gulp.task('lint', () => {
-  return lint('client/scripts/**/*.js', {
+  return lint('src/client/scripts/**/*.js', {
     fix: true
   })
-    .pipe(gulp.dest('client/scripts'));
+  .pipe(gulp.dest('src/client/scripts'));
 });
 
 gulp.task('lint:test', () => {
-  return lint('test/spec/**/*.js', {
+  return lint('src/test/spec/**/*.js', {
     fix: true,
     env: {
       mocha: true
     }
   })
-    .pipe(gulp.dest('test/spec/**/*.js'));
+    .pipe(gulp.dest('src/test/spec/**/*.js'));
 });
 
 gulp.task('html', ['styles', 'index'], () => {
   return gulp.src('.tmp/*.html')
-    .pipe($.useref({searchPath: ['.tmp', 'client', '.']}))
+    .pipe($.useref({searchPath: ['.tmp', 'src/client', '.']}))
     .pipe($.if('*.js', $.uglify({mangle: false})))
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
@@ -83,12 +83,12 @@ gulp.task('html', ['styles', 'index'], () => {
 });
 
 gulp.task('node', ()=>{
-  return gulp.src('{server.js,package.json,web.config,iisnode.yml}')
+  return gulp.src(['src/server/*','package.json'])
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('images', () => {
-  return gulp.src('client/images/**/*')
+  return gulp.src('src/client/images/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true,
@@ -101,15 +101,15 @@ gulp.task('images', () => {
 
 gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {})
-    .concat('client/fonts/**/*'))
+    .concat('src/client/fonts/**/*'))
     .pipe(gulp.dest('.tmp/fonts'))
     .pipe(gulp.dest('dist/client/fonts'));
 });
 
 gulp.task('extras', () => {
   return gulp.src([
-    'client/*.*',
-    '!client/*.html'
+    'src/client/*.*',
+    '!src/client/*.html'
   ], {
     dot: true
   }).pipe(gulp.dest('dist/client'));
@@ -120,21 +120,21 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 gulp.task('serve', ['styles', 'scripts', 'index', 'fonts', 'nodemon'], () => {
   browserSync.init(null, {
 		proxy: "http://localhost:3000",
-        files: ["client/**/*.*"],
+        files: ["src/client/**/*.*"],
         port: 7000,
 	});
 
   gulp.watch([
-    'client/*.html',
-    'client/images/**/*',
+    'src/client/*.html',
+    'src/client/images/**/*',
     '.tmp/fonts/**/*',
     '.tmp/**/*'
   ]).on('change', reload);
 
-  gulp.watch('client/styles/**/*.scss', ['styles']);
-  gulp.watch('client/**/*.html', ['index']);
-  gulp.watch('client/scripts/**/*.ts', ['index']);
-  gulp.watch('client/fonts/**/*', ['fonts']);
+  gulp.watch('src/client/styles/**/*.scss', ['styles']);
+  gulp.watch('src/client/**/*.html', ['index']);
+  gulp.watch('src/client/scripts/**/*.ts', ['index']);
+  gulp.watch('src/client/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
@@ -178,20 +178,20 @@ gulp.task('serve:test', ['scripts'], () => {
     }
   });
 
-  gulp.watch('client/scripts/**/*.js', ['scripts']);
+  gulp.watch('src/client/scripts/**/*.js', ['scripts']);
   gulp.watch('test/spec/**/*.js').on('change', reload);
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
 // inject bower components
 gulp.task('wiredep', () => {
-  gulp.src('client/styles/*.scss')
+  gulp.src('src/client/styles/*.scss')
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)+/
     }))
-    .pipe(gulp.dest('client/styles'));
+    .pipe(gulp.dest('src/client/styles'));
 
-  gulp.src('client/*.html')
+  gulp.src('src/client/*.html')
     .pipe(wiredep({
       exclude: ['bootstrap-sass'],
       ignorePath: /^(\.\.\/)*\.\./

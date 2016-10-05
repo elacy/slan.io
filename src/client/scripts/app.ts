@@ -1,6 +1,6 @@
-/// <reference path="../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
-/// <reference path="../../bower_components/DefinitelyTyped/knockout/knockout.d.ts" />
-/// <reference path="../../bower_components/DefinitelyTyped/jquery.bbq/jquery.bbq.d.ts"/>
+/// <reference path="../../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
+/// <reference path="../../../bower_components/DefinitelyTyped/knockout/knockout.d.ts" />
+/// <reference path="../../../bower_components/DefinitelyTyped/jquery.bbq/jquery.bbq.d.ts"/>
 /// <reference path="../../typescript-definitions/jquery-nicescroll.d.ts" />
 /// <reference path="crypt.ts" />
 /// <reference path="./view/app-view.ts" />

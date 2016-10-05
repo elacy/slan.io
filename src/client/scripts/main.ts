@@ -1,4 +1,4 @@
-/// <reference path="../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
+/// <reference path="../../../bower_components/DefinitelyTyped/jquery/jquery.d.ts" />
 /// <reference path="../../typescript-definitions/jquery-nicescroll.d.ts" />
 /// <reference path="app.ts" />
 
